@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %} Search Resource {% endblock %}
+
+{% block span %} Search Resources {% endblock %}
+
+{% block content %}
+<br><br><br>
+<div class="center login">
+<form method="post" id="resourceForm" data-resource-url="{% url 'ajax_load_resource' %}" novalidate>
+                {% csrf_token %}
+                <table>
+                  {{ form|crispy }}
+                </table>
+                <button type="submit"  class="btn btn-primary" value="Log in">Submit</button>   
+               
+</form>
+</div>
+<script src="{% static 'js/jquery.min.js' %}" ></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+  <script>
+    $("#id_category").change(function () {
+      var url = $("#resourceForm").attr("data-resource-url");  // get the url of the `load_cities` view
+      var categoryId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'category': categoryId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_resource").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
+
+{% endblock %}

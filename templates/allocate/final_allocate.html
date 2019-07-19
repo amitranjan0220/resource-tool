@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Assigned Resource {% endblock %}
+
+{% block span %} Assigned Resources {% endblock %}
+
+{% block content %}
+<table class="table table-bordered"> 
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>User</th>
+        <th>Full Name</th>
+        <th>Allocation Date</th>
+    </tr>
+    </thead>
+    <tbody>
+            {% for list in list %}
+    <tr>
+        <td>{{ list.resource }}</td>
+        <td>{{ list.user }}</td>
+        <td>{{ list.get_full_name }}</td>
+        <td>{{ list.created_at }}</td>
+    </tr>
+            {% endfor %}
+    </tbody>
+</table>
+<br>
+
+{% endblock %}

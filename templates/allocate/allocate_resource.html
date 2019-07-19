@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %} Assign Resource {% endblock %}
+
+{% block span %} Assign Resource {% endblock %}
+
+{% block content %}
+<style>
+textarea {
+  height:40px;
+}
+</style>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        <div class="alert alert-primary" role="alert">
+                        {{ message }}
+        </div>     
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div>
+<form action="." method="POST">
+    {% csrf_token %}
+<table class="table table-bordered "> 
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>IP</th>
+        <th>Status</th>
+        <th>Comment</th>
+        <th>User</th>
+    </tr>
+    </thead>
+    <tbody>
+            {% for res in ress %} 
+    <tr>
+        <td>{{ res.rsc_name }}</td>
+        <td>{{ res.rsc_ip }}</td>
+        <td>{{ res.rsc_status }}</td>
+        <td><input name="comment_{{ res }}" id="{{ res.id }}"></input></td>
+        <td><select name="{{ res }}">
+                <option value="{{ none_user.id }}" id="{{ res.id }} + {{ res.id }}">{{none_user.username}}</option>
+                {% for user in users %}
+                <option value="{{ user.id }}" id="{{ res.id }}">{{user.username}}</option>
+                {% endfor %}
+            </select></td> 
+    </tr>
+            {% endfor %}
+    </tbody>
+</table>
+<button type="submit" style="margin-left: 25%;" class="btn btn-primary" value="Log in">Submit</button>   
+</form>
+</div>
+{% endblock %}

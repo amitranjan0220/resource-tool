@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %} Choose Resource {% endblock %}
+
+{% block span %} Choose Resource {% endblock %}
+
+{% block content %}
+<div class="card border-primary mb-3"  style="min-width: 20rem; text-align: center;">
+                {% for cat in cat %}
+        <div class="card-footer bg-transparent border-primary"><a href="{% url 'select_resource' cat.id %}">{{ cat }}</a></div>
+                {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %} Resource Home {% endblock %}
+
+{% block span %} Manage Resources {% endblock %}
+
+{% block content %}
+<div class="card border-primary mb-3" style="text-align: center;">
+    <div class="card-footer bg-transparent border-primary"><a href="{% url 'add_category' %}">Add Resource Category</a></div>
+    <div class="card-footer bg-transparent border-primary"><a href="{% url 'add_resource' %}">Add Resources</a></div>
+    <div class="card-footer bg-transparent border-primary"><a href="{% url 'view_resource' %}">View Resources</a></div>
+</div>
+
+ 
+
+        
+{% endblock %}

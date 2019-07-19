@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %} Allocate Resources {% endblock %}
+
+{% block span %} Allocate Resources {% endblock %}
+
+{% block content %}
+<div class="card border-primary mb-3"  style="min-width: 20rem; text-align: center;">
+    <div class="card-footer bg-transparent border-primary"><a href="{% url 'allocate_resource' %}">Allocate Resources</a></div>
+    <div class="card-footer bg-transparent border-primary"><a href="{% url 'allocate_view' %}">View Allocation</a></div>
+</div>
+{% endblock %}

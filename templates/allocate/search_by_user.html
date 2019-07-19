@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} User Search {% endblock %}
+
+{% block span %} Select User {% endblock %}
+
+{% block content %}
+<br><br><br>
+<div class="center login">
+<form action="." method="post">
+        {{ form|crispy }}
+        {% csrf_token %}
+        <button type="submit"  class="btn btn-primary" value="Log in">Submit</button>   
+</form>
+</div>
+
+{% endblock %}

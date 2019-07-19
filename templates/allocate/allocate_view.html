@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} View Allocation {% endblock %}
+
+{% block span %} View Allocation {% endblock %}
+
+{% block content %}
+<div class="card border-primary mb-3"  style="min-width: 20rem; text-align: center;">
+    <div class="card-footer bg-transparent border-primary"><a href="{% url 'search_by_user' %}" >
+        Search By User
+        </a></div>
+    <div class="card-footer bg-transparent border-primary"><a href="{% url 'search_by_resource' %}">
+        Search By Resource</a></div>
+</div>        
+{% endblock %}

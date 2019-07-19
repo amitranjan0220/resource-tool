@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} All {{ cat }} {% endblock %}
+
+{% block span %} All {{ cat }} {% endblock %}
+
+{% block content %}
+<div class="table-responsive">
+<table class="table table-bordered"> 
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>IP Address</th>
+        <th>Comment</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+          {% if item_list %}
+            {% for item in item_list %}
+    <tr>
+        <td>{{ item.rsc_name }}</td>
+        <td>{{ item.rsc_ip }}</td>
+        <td>{{ item.rsc_comment }}</td>
+        <td>{{ item.rsc_status }}</td>
+        <td><a href="{% url 'edit_item' item.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Edit</a></td>
+        <td><a href="{% url 'delete_resource' item.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Delete</a></td>
+    </tr>
+    {% endfor %}
+    {%  else %}
+    <p>No item available</p>
+    {% endif %}
+    
+    </tbody>
+</table>
+</div>
+{% endblock %}

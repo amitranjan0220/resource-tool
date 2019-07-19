@@ -1,0 +1,4 @@
+<option value="">--------</option>
+{% for resource in resources %}
+<option value="{{ resource.pk }}">{{ resource.rsc_name }}</option>
+{% endfor %}

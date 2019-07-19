@@ -1,0 +1,72 @@
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  
+  <body>
+      <div id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          
+          <a class="" href="{% url 'home' %}">Home</a>
+          <a class="" href="{% url 'resource_home' %}">Resources</a>
+          <a class="" href="{% url 'allocate_home' %}">Allocation</a>
+          </div>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+          </button>
+           <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <a class="navbar-brand" href="#" onclick="openNav()"><span class="navbar-toggler-icon"></span></a>
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                  <a class="nav-item"><div style="color:white">{% block span %}{% endblock %}</div><span class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">  
+                           
+                <button class="btn btn-danger my-2 my-sm-0" type="submit" style="width:100%;">
+                      <a  style="color:white" class="mdl-navigation__link" href="{% url 'logout' %}">Logout</a> 
+                </button>
+              </form>
+            </div>
+          </nav>
+        <!-- <div class="container"> -->
+          <div class="center">  
+            
+          {% block content %}
+
+          {% endblock %}
+        
+        </div>
+      </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'js/jquery.min.js' %}" ></script>
+    <script src="{% static 'js/popper.min.js' %}" ></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+          document.getElementById("main").style.marginLeft = "250px";
+          document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+        
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+          document.getElementById("main").style.marginLeft= "0";
+          document.body.style.backgroundColor = "white";
+        }
+    </script>
+  </body>
+</html>
